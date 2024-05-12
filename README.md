@@ -15,10 +15,10 @@
     - conversion
         - `(hex)` -> replace the word before with its decimal version
             - note: the word will always be a **hexadecimal number**
-            - ex:  `1E (hex)` -> 30; `42` -> 66
+            - ex:  `1E (hex)` -> 30; `1A` -> 26; `42` -> 66
         - `(bin)` -> replace the word before with its decimal version
             - note:  the word will always be a **binary number**
-            - ex: `10 (bin)` -> 2; `101` -> 26
+            - ex: `10 (bin)` -> 2; `101` -> 5
     - texte transformation
         - `(up, <num>?)` -> converts the word before with its Uppercase version
             - ex: "Ready, set, go (up) !" -> "Ready, set, GO !"
