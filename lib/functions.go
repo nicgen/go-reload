@@ -7,39 +7,54 @@ import (
 	"strconv"
 )
 
-func ReadTxt() {
-	file, err := os.Open("sample.txt")
+func ReadFile(filename string) string {
+	var content string = ""
+	file, err := os.Open(filename) // open the file for reading
 	if err != nil {
 		fmt.Println(err)
 	}
-	defer file.Close()
+	defer file.Close()       // closes the file after everything is done
+	fmt.Println(file.Stat()) // return
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		fmt.Println(scanner.Text())
+		content = scanner.Text()
 	}
 
 	if err := scanner.Err(); err != nil {
 		fmt.Println(err)
 	}
+	return string(content)
 }
 
-func Hex2decimal(hexa string) int {
+// func Hex2decimal(hexa string) int {
+// 	output, err := strconv.ParseInt(hexa, 16, 32)
+// 	if err != nil {
+// 		fmt.Println(err)
+// 	}
+// 	// x := string(output)
+// 	return int(output)
+// }
+
+func Hex2decimal(hexa string) string {
 	output, err := strconv.ParseInt(hexa, 16, 32)
 	if err != nil {
 		fmt.Println(err)
 	}
 	// x := string(output)
-	return int(output)
+	// return int(output)
+	return strconv.Itoa(int(output))
 }
 
-func Bin2decimal(bin string) int {
+func Bin2decimal(bin string) string {
 	output, err := strconv.ParseInt(bin, 2, 64)
 	if err != nil {
 		fmt.Println(err)
 	}
 	// x := string(output)
-	return int(output)
+	// return int(output)
+	return strconv.Itoa(int(output))
 }
 
 // func before ()
