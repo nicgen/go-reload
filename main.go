@@ -42,9 +42,9 @@ func main() {
 
 	fmt.Println("FUNCS------------------------------------------")
 
-	hex := reload.Hex2decimal("1A")
-	fmt.Println("HEX: ", hex)
-	fmt.Printf("type: %T\n", hex)
+	// hex := reload.Hex2decimal("1A")
+	// fmt.Println("HEX: ", hex)
+	// fmt.Printf("type: %T\n", hex)
 	bin := reload.Bin2decimal("101")
 	fmt.Println("BIN: ", bin)
 	fmt.Printf("type: %T\n", bin)
@@ -53,4 +53,11 @@ func main() {
 
 	// fmt.Println("BIN/ITOA: ", strconv.Itoa(bin))
 	// fmt.Printf("type: %T\n", strconv.Itoa(bin))
+
+	// REMOVE index
+
+	myArray := []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+	fmt.Println(myArray) //[0 1 2 3 4 5 6 7 8 9]
+	myArray = reload.RemoveIndex(myArray, 5)
+	fmt.Println(myArray) //[0 1 2 3 4 6 7 8 9]
 }

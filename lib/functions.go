@@ -37,14 +37,14 @@ func ReadFile(filename string) string {
 // 	return int(output)
 // }
 
-func Hex2decimal(hexa string) string {
+func Hex2decimal(hexa string) (string, error) {
 	output, err := strconv.ParseInt(hexa, 16, 32)
 	if err != nil {
 		fmt.Println(err)
 	}
 	// x := string(output)
 	// return int(output)
-	return strconv.Itoa(int(output))
+	return strconv.Itoa(int(output)), nil
 }
 
 func Bin2decimal(bin string) string {
@@ -55,6 +55,10 @@ func Bin2decimal(bin string) string {
 	// x := string(output)
 	// return int(output)
 	return strconv.Itoa(int(output))
+}
+
+func RemoveIndex(s []int, index int) []int {
+	return append(s[:index], s[index+1:]...)
 }
 
 // func before ()
