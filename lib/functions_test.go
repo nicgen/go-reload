@@ -1,28 +1,57 @@
 package reload
 
 import (
-	// reload "reload/lib"
-	"regexp"
 	"testing"
 )
 
-// TestHelloName calls greetings.Hello with a name, checking
-// for a valid return value.
-func TestHex2decimal(t *testing.T) {
-	name := "1A"
-	want := regexp.MustCompile(`\b` + name + `\b`)
-	msg, err := Hex2decimal("1A")
-	// msg, err := Hex2decimal("1A")
-	if !want.MatchString(msg) || err != nil {
-		t.Fatalf(`Hello("Gladys") = %q, %v, want match for %#q, nil`, msg, err, want)
+func TestReadFile(t *testing.T) {
+	got := ReadFile("sample.txt")
+	want := "If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?"
+	if got != want {
+		t.Errorf("got %q, wanted %q", got, want)
 	}
 }
 
-// TestHelloEmpty calls greetings.Hello with an empty string,
-// checking for an error.
-// func TestHelloEmpty(t *testing.T) {
-// 	msg, err := Hello("")
-// 	if msg != "" || err == nil {
-// 		t.Fatalf(`Hello("") = %q, %v, want "", error`, msg, err)
-// 	}
-// }
+func TestHex2decimal(t *testing.T) {
+	var tests = []struct {
+		got  string
+		want string
+	}{
+		{"1A", "26"},
+		{"17", "23"},
+		{"2A", "42"},
+		{"29A", "666"},
+	}
+	for _, tt := range tests {
+		tt_batch := tt.got
+		t.Run(tt_batch, func(t *testing.T) {
+			ans := Hex2decimal(tt.got)
+			if ans != tt.want {
+				t.Errorf("got %s, want %s", ans, tt.want)
+			}
+		})
+	}
+}
+
+func TestBin2decimal(t *testing.T) {
+	var tests = []struct {
+		got  string
+		want string
+	}{
+		{"101", "5"},
+		{"10111", "23"},
+		{"101010", "42"},
+		{"1010011010", "666"},
+		{"01111111111111111111111111111111", "2147483647"}, // note: biggest positive number that will fit in 32 bits when using the “two’s complement” notation
+		{"11111111111111111111111111111111", "4294967295"},
+	}
+	for _, tt := range tests {
+		tt_batch := tt.got
+		t.Run(tt_batch, func(t *testing.T) {
+			ans := Bin2decimal(tt.got)
+			if ans != tt.want {
+				t.Errorf("got %s, want %s", ans, tt.want)
+			}
+		})
+	}
+}

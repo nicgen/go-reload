@@ -13,12 +13,12 @@ func ReadFile(filename string) string {
 	if err != nil {
 		fmt.Println(err)
 	}
-	defer file.Close()       // closes the file after everything is done
-	fmt.Println(file.Stat()) // return
+	defer file.Close() // closes the file after everything is done
+	// fmt.Println(file.Stat())
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
+		// fmt.Println(scanner.Text())
 		content = scanner.Text()
 	}
 
@@ -28,23 +28,12 @@ func ReadFile(filename string) string {
 	return string(content)
 }
 
-// func Hex2decimal(hexa string) int {
-// 	output, err := strconv.ParseInt(hexa, 16, 32)
-// 	if err != nil {
-// 		fmt.Println(err)
-// 	}
-// 	// x := string(output)
-// 	return int(output)
-// }
-
-func Hex2decimal(hexa string) (string, error) {
+func Hex2decimal(hexa string) string {
 	output, err := strconv.ParseInt(hexa, 16, 32)
 	if err != nil {
 		fmt.Println(err)
 	}
-	// x := string(output)
-	// return int(output)
-	return strconv.Itoa(int(output)), nil
+	return strconv.Itoa(int(output))
 }
 
 func Bin2decimal(bin string) string {
@@ -52,12 +41,10 @@ func Bin2decimal(bin string) string {
 	if err != nil {
 		fmt.Println(err)
 	}
-	// x := string(output)
-	// return int(output)
 	return strconv.Itoa(int(output))
 }
 
-func RemoveIndex(s []int, index int) []int {
+func RemoveIndex(s []string, index int) []string {
 	return append(s[:index], s[index+1:]...)
 }
 
