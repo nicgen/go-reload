@@ -6,7 +6,7 @@
 
 - [x] Your project must be written in Go.
 - [ ] The code should respect the [good practices](https://github.com/01-edu/public/blob/master/subjects/good-practices/README.md).
-- [ ] It is recommended to have test files for [unit testing](https://go.dev/doc/tutorial/add-a-test).
+- [ ] (optional) It is recommended to have test files for [unit testing](https://go.dev/doc/tutorial/add-a-test).
 
 - tool receive (as arguments):
     - the name of a file containing a text that needs modifications (input)
