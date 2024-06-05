@@ -1,5 +1,26 @@
 # Go-reloaded
 
+## Usage
+
+Clone the repo:
+
+```
+git clone https://zone01normandie.org/git/ngenty/go-reloaded
+cd go-reloaded
+```
+
+create a sample file (for ex: sample.txt)
+
+```
+harold wilson (cap, 2) : ' I am a optimist ,but a optimist who carries a raincoat . '
+```
+
+execute the code with:
+
+```
+go run . "sample.txt" "output.txt"
+```
+
 ## Objectives
 
 > In this project you will use some of your old functions made in your old repository. You will use them with the objective of making a simple text completion/editing/auto-correction tool.
